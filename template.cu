@@ -6,7 +6,7 @@ __global__ void add_kernel(float *a, float *b, float *c, int N) {
     }
 }
 
-template<long long l = 0, long long r = 65536>
+template<long long l = 0, long long r = 1000>
 void _add(float *a, float *b, float *c, int N) {
     if constexpr (l == r) {
         add_kernel<l><<<(N + 255) / 256, 256>>>(a, b, c, N);
